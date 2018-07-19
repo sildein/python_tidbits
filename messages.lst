@@ -1,0 +1,105 @@
+# This file stores long help and error messages and such, so I don't have to
+# fuck up the formatting to make them Python literal-friendly. These messages
+# are parsed by '_mod_config.py' at runtime.
+
+$python2_msg
+You are using a Python 2 interpreter, which is deprecated software. This script
+hasn't been tested for backwards-compatibility.
+
+If you absolutely need to use outdated software (even WinXP has a Python 3
+interpreter), you can choose to ignore this on a per-program basis by setting
+'py2_gtfo' to False in the script's config section. Keep in mind that
+this may result in crashes or unexpected (and potentially bad) behavior, and it
+will be entirely your fault.
+$end
+
+$unix_os_msg
+This script has a superior, native Unix equivalent, and it's recommended that
+you use it instead. Override this by editing the script's config section and
+setting 'unix_check' to False.
+$end
+
+$mkrandom_help
+mkrandom.py creates files of a given size with random data.
+
+Usage:
+
+    [python] mkrandom.py file [size=(int)] [iter=(int)] [verbose]
+
+    ---------------------------------------------------------------------------
+    size    | Length of the file in bytes (default = 1MB)
+    ---------------------------------------------------------------------------
+    iter    | Create this many files in a loop, appending the filenames with an
+            | integer (default = 1)
+    ---------------------------------------------------------------------------
+    quiet   | Don't announce file creations on the console (may help a little
+            | with large loops on SSDs)
+    ---------------------------------------------------------------------------
+$end
+
+$archive_all_help
+archive_all.py is a backup script that creates individual 7z archives for each
+file or directory within the input directory. Obviously, this requires the
+console version of 7zip to be installed and in your PATH.
+
+Usage:
+
+    [python] archive_all.py [wd=(str)] [ignore=(str)] [verbose]
+
+    ---------------------------------------------------------------------------
+    id     | Input directory. The one that contains what we want to archive.
+    ---------------------------------------------------------------------------
+    od     | Output directory. Where we want the archives to go.
+    ---------------------------------------------------------------------------
+    blist  | Blacklist. A text file containing a line-separated list of files
+           | or directories to ignore.
+    ---------------------------------------------------------------------------
+    wlist  | Whitelist. A text file containing a line-separated list of files
+           | or directories you *specifically* want to archive.
+    ---------------------------------------------------------------------------
+
+If neither 'id' or 'od' are set, a folder named 'Trash' will be created in the
+PWD (if it doesn't already exist), and things that are successfully archived
+will be moved here afterwards.
+
+The 'wlist' and 'blist' arguments cannot be used together.
+$end
+
+$archive_all_list_error
+You cannot use both a whitelist and blacklist in the same command.
+$end
+
+$tree_help
+tree.py recursively drills through the folder hierarchy under a given root
+and prints the paths and filenames of any files found.
+
+Usage:
+
+    [python] tree.py root [abs] [rel]
+
+    ---------------------------------------------------------------------------
+    root    | Root folder. The base of the directory tree.
+    ---------------------------------------------------------------------------
+    abs     | Print absolute paths to discovered files.
+    ---------------------------------------------------------------------------
+    rel     | Print relative paths to discovered files.
+    ---------------------------------------------------------------------------
+
+If neither 'abs' or 'rel' are specified, then relative paths will be used for
+the current (.) or parent (..) entries, and absolute paths for anything else.
+Obviously, these arguments conflict.
+$end
+
+$touch_help
+touch.py literally just creates empty files.
+
+Usage:
+
+    [python] touch.py file
+
+    ---------------------------------------------------------------------------
+    file    | The file to be created.
+    ---------------------------------------------------------------------------
+
+That's literally it.
+$end
